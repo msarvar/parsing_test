@@ -4,8 +4,11 @@ class CommonLexer < Lexer
   LBRACK = 4
   RBRACK = 5
   EQUALS = 6
+  INT = 7
+  PLUS = 8
+  VEC = 9
 
-  TOKEN_NAMES = %w{n/a <EOF> NAME COMMA LBRACK RBRACK EQUALS}
+  TOKEN_NAMES = %w{n/a <EOF> NAME COMMA LBRACK RBRACK EQUALS INTEGER PLUS VEC}
 
   def initialize(input)
   	super(input)

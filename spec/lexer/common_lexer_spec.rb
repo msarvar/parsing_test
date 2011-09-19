@@ -12,7 +12,7 @@ describe CommonLexer do
     end
 
     it "has TOKEN_NAMES constant with token names in it" do
-      CommonLexer::TOKEN_NAMES.should == ["n/a", "<EOF>", "NAME", "COMMA", "LBRACK", "RBRACK", "EQUALS"]
+      CommonLexer::TOKEN_NAMES.should == ["n/a", "<EOF>", "NAME", "COMMA", "LBRACK", "RBRACK", "EQUALS", "INTEGER", "PLUS"]
     end
   end
 
