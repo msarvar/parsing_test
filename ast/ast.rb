@@ -23,7 +23,7 @@ class Ast
   end
 
   def to_s
-  	token.nil? ? "nil" : token.to_s
+  	token.nil? ? "nil" : token.text
   end
 
   def to_s_tree
@@ -38,5 +38,9 @@ class Ast
 
 	buf << ")" unless nil?
 	buf
+  end
+
+  def visit(visitor)
+    visitor.visit(self)
   end
 end

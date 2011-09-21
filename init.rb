@@ -3,16 +3,19 @@ $LOAD_PATH.unshift(WATT_ROOT)
 require 'ast/ast'
 require 'ast/expr_node'
 require 'ast/add_node'
+require 'ast/int_node'
+require 'ast/vec_node'
+require 'visitors/print_visitor'
+require 'visitors/ind_print_visitor'
 Dir[WATT_ROOT + ("/lexer/*.rb")].reverse.each {|f| require f}
 Dir[WATT_ROOT + ("/parser/*.rb")].reverse.each {|f| require f}
 Dir[WATT_ROOT + ("/*.rb")].reverse.each {|f| require f}
 
-plus = Token.new(CommonLexer::PLUS, "+")
-one = Token.new(CommonLexer::INT, "1")
-two = Token.new(CommonLexer::INT, "2")
+one = IntNode.new(Token.new(CommonLexer::INT, "1"))
+two = IntNode.new(Token.new(CommonLexer::INT, "2"))
+three = IntNode.new(Token.new(CommonLexer::INT, "3"))
+list = [one, two, three]
+vector = VecNode.new(Token.new(CommonLexer::VEC), list)
+vector.visit(PrintVisitor.new)
 
-root = Ast.new(plus)
-root.add_child(Ast.new(one))
-root.add_child(Ast.new(two))
-
-puts root.to_s_tree
+IndPrintVisitor.new.print(vector)
